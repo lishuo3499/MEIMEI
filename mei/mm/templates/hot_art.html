@@ -1,0 +1,140 @@
+
+{% include 'header.html' %} 
+
+
+<div class="jq22-container">
+	
+		<div class="jq22-content bgcolor-3">
+			<div class='sangar-slideshow-container' id='sangar-example2'>
+				<div class='sangar-content-wrapper' style='display:none;'>	
+						{% for i in wheel %}
+					<div class='sangar-content'>
+					<img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" /></div>
+					{%endfor%} 
+				</div>
+			</div>	
+		</div>
+
+	</div>
+
+
+
+
+	<br><br><br>
+
+<ul class="nav nav-pills"style='width:95%;margin:0 auto;'>
+	<li role="presentation"  class=""><a href="/?type=xinggan" style=''>全部套图</a></li>
+	<li role="presentation"  class="active"><a href="/hot_art" style='background-color: #ff4466;'>热门推荐</a></li>
+	<li role="presentation"  class=""><a href="/random_img" style=''>随机匹配</a></li>
+	<!-- {% for i in classify2%}
+	<li role="presentation"><a href="" style='color:#ff4466;'>{{i.title}}</a></li>
+{%endfor%} -->
+	</ul>
+
+
+
+
+	  <br><br><br>
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry" >
+			{% for i in articles %}
+			<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+				<figure>
+					<a href="/single?page={{i.article_id.id}}"><img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" alt="Image" class="img-responsive"></a>
+				</figure>
+				<span class="fh5co-meta"><a href="/single?page={{i.article_id.id}}">{{i.article_id.classify.title}}</a></span>
+				<h2 class="fh5co-article-title" ><a href="/single?page={{i.article_id.id}}" style='color:#ff4466;'>{{i.article_id.title}}</a></h2>
+				<span class="fh5co-meta fh5co-date">{{i.article_id.time|date:"Y-m-d"}}  &nbsp;&nbsp;&nbsp;
+					<i class="layui-icon layui-icon-user"></i>&nbsp;{{i.article_id.visit_num}}次浏览 </span>
+			</article>
+		{%endfor%}
+		</div>
+	</div>
+
+
+	
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+	
+
+
+	</body>
+
+	<script>
+			layui.use(['carousel', 'form'], function(){
+			  var carousel = layui.carousel
+			  ,form = layui.form;
+			
+			  //图片轮播
+			  carousel.render({
+				elem: '#test1'
+				,width: '100%'
+				,height: '840px'
+				,interval: 5000
+			  });
+
+
+			});
+	
+			layui.use('element', function(){
+			  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+			  //监听导航点击
+			  element.on('nav(demo)', function(elem){
+				//console.log(elem)
+				layer.msg(elem.text());
+			  });
+			});
+			</script>
+
+
+			
+<!-- 轮播图 -->
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/imagesloaded.min.js"></script>
+	<!-- jQuery Sangar Slider -->
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarBaseClass.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupLayout.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSizeAndScale.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarShift.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupBulletNav.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupNavigation.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupSwipeTouch.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupTimer.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarBeforeAfter.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarLock.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarResponsiveClass.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarResetSlider.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarTextbox.js"></script>
+	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider.js"></script>
+	<script type='text/javascript'>
+				jQuery(document).ready(function($) {
+						var sangar2 = $('#sangar-example2').sangarSlider({
+					timer :  true, // true or false to have the timer
+					advanceSpeed:3000,
+			        pagination : 'content-horizontal', // bullet, content, none
+					paginationContent : [
+					{% for i in wheel %}
+	   "http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}",
+	   {%endfor%}		
+					], // can be text, image, or something			        
+			        paginationContentType : 'image', // text, image
+			        paginationContentWidth : 120, // pagination content width in pixel
+			        paginationImageHeight : 160, // pagination image height
+			        width : 850, // slideshow width
+        			height : 1000, // slideshow height
+			        fixedHeight: true,
+			        scaleSlide : true // slider will scale to the container size
+				});
+			})
+		
+	</script>
+</html>
+

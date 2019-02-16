@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<script src="http://114.116.165.218/static/js/jquery.min.js"></script>
+</head>
+<body>
+<div style="text-align: center;">
+<h1><span id="min">5</span>秒后跳转到萌妹子网</h1>
+<a href="http://114.116.165.218:8008/hot_art"> 直接点击进入</a>
+<h3>欢迎加入交流群:835508273</h3>
+</div>
+<script type="text/javascript">
+    var min = 0
+   var time = setInterval(function(){ 
+    $('#min').text(min)
+    //min--;
+    if (min==0) {
+        window.location.href = 'http://114.116.165.218:8008/hot_art'
+        clearInterval(time);
+    }
+}
+    , 1000);
+</script>
+</body>
+</html>

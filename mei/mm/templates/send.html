@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"></meta>
+
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0"
+	></meta>
+
+	<meta
+		http-equiv="X-UA-Compatible"
+		content="ie=edge"
+	></meta>
+
+	<title>Document</title>
+
+	<link
+		rel="stylesheet"
+		href="http://114.116.165.218/static/layui/css/layui.css"
+	></link>
+
+	<style>
+	.image_append{
+		height: 80px;
+		width: 80px;
+		border-radius: 1em;
+		margin-right: 20px;
+	}
+	#wrapper input,#wrapper2 input{
+		display: inline-block;
+	}
+	</style>
+</head>
+
+<body>
+		{% include 'header.html' %} 
+
+
+	<div class="layui-container">
+		<div
+			class="layui-row"
+			style="text-align:center;padding-top: 150px;"
+		>
+			<h1>发表</h1>
+
+			<br>
+
+			<form
+				action="/upload_img"
+				class="layui-form"
+				method="post"
+				enctype="multipart/form-data"
+			>
+				<div class="layui-form-item">
+					<label class="layui-form-label">标题</label>
+
+					<div class="layui-input-block">
+						<input
+							type="text"
+							name="title"
+							lay-verify="title"
+							autocomplete="off"
+							placeholder="请输入标题"
+							class="layui-input"
+						></input>
+					</div>
+				</div>
+
+				<div id="wrapper2">
+						<input
+							id="fileUpload2"
+							type="file"
+							name="fm_img"
+							 value=""
+						></input>
+	
+						<br>
+						<div id="image-holder2"></div>
+					</div><br>
+				<div class="layui-form-item">
+					<label class="layui-form-label">分类</label>
+
+					<div class="layui-input-block">
+						<select
+							lay-filter="aihao"
+							name="classify"
+						>
+							<option value=""></option>
+
+						{% for i in classify %}
+							<option value="{{i.id}}" selected="">{{i.title}}</option>
+
+						{% endfor %}
+						</select>
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">二级分类</label>
+
+					<div class="layui-input-block">
+						<select
+							lay-filter="aihao"
+							name="classify2"
+						>
+							<option value=""></option>
+							<option value="" selected="">无二级分类</option>
+						{% for i in classify2 %}
+							<option value="{{i.id}}" selected="">{{i.title}}</option>
+						{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">内容</label>
+
+					<div class="layui-input-block">
+						<textarea
+							placeholder="请输入内容"
+							name="text"
+							class="layui-textarea"
+						></textarea>
+					</div>
+				</div>
+
+				<div id="wrapper">
+					<input
+						id="fileUpload"
+						type="file"
+						name="img_file"
+						multiple="multiple"
+					></input>
+
+					<br><br>
+					<div id="image-holder"></div>
+				</div><br><br>
+
+
+				<button
+					class="layui-btn layui-btn-normal"
+					onclick="post_data()"
+				>提交</button>
+			</form>
+
+		</div>
+	</div>
+	{% include 'footer.html' %}
+</body>
+
+<script src="http://114.116.165.218/static/layui/layui.all.js"></script>
+<script src="http://114.116.165.218/static/js/jquery.min.js"></script>
+
+<script>
+	$("#fileUpload").on('change', function () {   
+	 //获取上传文件的数量  
+	 var countFiles = $(this)[0].files.length;   
+	 var imgPath = $(this)[0].value; 
+	  var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();   
+	var image_holder = $("#image-holder");   image_holder.empty();  
+	  if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {     
+		  if (typeof (FileReader) != "undefined") {            // 循环所有要上传的图片    
+		       for (var i = 0; i < countFiles; i++) {              
+			  var reader = new FileReader();   
+			            reader.onload = function (e) {        
+				           $("<img />", {     
+					                  "src": e.target.result,        
+				                   "class": "thumb-image image_append"                 
+				  }).appendTo(image_holder);     
+				          }              
+				  image_holder.show();        
+				       reader.readAsDataURL($(this)[0].files[i]);         
+				  }        } else {      
+					     alert("你的浏览器不支持FileReader！");  
+				     }   } else {   
+					    alert("请选择图像文件。");   }});
+
+
+
+
+					$("#fileUpload2").on('change', function () {   
+	 //获取上传文件的数量  
+	 var countFiles = $(this)[0].files.length;   
+	 var imgPath = $(this)[0].value; 
+	  var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();   
+	var image_holder = $("#image-holder2");   image_holder.empty();  
+	  if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {     
+		  if (typeof (FileReader) != "undefined") {            // 循环所有要上传的图片    
+		       for (var i = 0; i < countFiles; i++) {              
+			  var reader = new FileReader();   
+			            reader.onload = function (e) {        
+				           $("<img />", {     
+					                  "src": e.target.result,        
+				                   "class": "thumb-image image_append"                 
+				  }).appendTo(image_holder);     
+				          }              
+				  image_holder.show();        
+				       reader.readAsDataURL($(this)[0].files[i]);         
+				  }        } else {      
+					     alert("你的浏览器不支持FileReader！");  
+				     }   } else {   
+					    alert("请选择图像文件。");   }});
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+	
+	$(document).ready(function(){
+		change_el()
+	$(window).resize(function() {
+		change_el()
+	});
+	});
+	
+	function change_el(){
+		if ($(window).width()<769){
+					$('.top_nav_index').hide()
+				}else{
+					$('.top_nav_index').show()
+				}
+	}
+		</script>
+</html>

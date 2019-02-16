@@ -1,0 +1,75 @@
+<div class="left-sidebar">
+        <!-- 用户信息 -->
+        <div class="tpl-sidebar-user-panel">
+            <div class="tpl-user-panel-slide-toggleable">
+                <div class="tpl-user-panel-profile-picture">
+                    <img src="http://114.116.165.218/static/images/31f13.jpg" alt="">
+                </div>
+                <span class="user-panel-logged-in-text">
+          <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+          {{user.username}}
+      </span>
+       </div>
+        </div>
+
+        
+        <!-- 菜单 -->
+        <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                        <a href="/hot_art">
+                            <i class="am-icon-home"></i> &nbsp; &nbsp; 图库首页
+                        </a>
+                    </li>
+                <li class="sidebar-nav-link">
+                        <a href="/admin/my_info">
+                            <i class="am-icon-cube"></i> &nbsp; &nbsp; 个人中心
+                        </a>
+                    </li>
+
+                <li class="sidebar-nav-link">
+                        <a href="/admin/my_article">
+                            <i class="am-icon-cloud-upload "></i> &nbsp; &nbsp; 我的上传
+                        </a>
+                    </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/attention">
+                    <i class="am-icon-star am-success sidebar-nav-link-logo"></i> 我的收藏
+                </a>
+            </li>
+
+         
+            {% if user.is_superuser is True %}
+            <li class="sidebar-nav-link">
+                <a href="/admin/m_classify">
+                    <i class="am-icon-table sidebar-nav-link-logo"></i>  分类管理
+                </a>
+        </li>
+           <li class="sidebar-nav-link">
+                <a href="/admin/hot_manage">
+                    <i class="am-icon-table sidebar-nav-link-logo"></i>  热门管理
+                </a>
+        </li>
+    {%endif%}
+         <!-- <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title active">
+                    <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <li class="sidebar-nav-link">
+                        <a href="table-list.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="table-list-img.html" class="sub-active">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
+                        </a>
+                    </li>
+                </ul>
+            </li> -->
+        
+
+        </ul>
+    </div>

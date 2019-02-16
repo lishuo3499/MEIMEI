@@ -1,0 +1,289 @@
+{% include 'admin/header.html' %}
+
+
+
+{% include 'admin/left_bar.html' %}
+
+<!-- 内容区域 -->
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">热门设置</div>
+                    </div>
+                    <div class="widget-body  am-fr">
+                        <div class="am-u-sm-12">
+                            <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                <thead>
+                                    <tr>
+                                        <th>封面图</th>
+                                        <th>文章标题</th>
+                                        <th>类别</th>
+                                        <th>时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in my_art%}
+                                    <tr class="gradeX" id='col_{{i.id}}'>
+                                        <td>
+                                            <img id='art_{{i.id}}' onclick='change_fm({{i.id}})' src="http://114.116.165.218/static/{{i.fm_img.img_file}}"
+                                                class="tpl-table-line-img" alt="">
+                                        </td>
+                                        <td class="am-text-middle">{{i.title}}</td>
+                                        <td class="am-text-middle">{{i.classify.title}}</td>
+                                        <td class="am-text-middle">{{i.time|date:'Y-m-d'}}</td>
+                                        <td class="am-text-middle">
+                                            <div class="tpl-table-black-operation">
+                                                <div onclick='set_hot({{i.id}})' class="tpl-table-black-operation-del">
+                                                    <i class="am-icon-fire"></i> 设为热门
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                    <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="am-u-lg-12 am-cf">
+
+
+                        </div>
+                    </div>
+
+                    <!-- 分页分页分页分页分页分页分页分页分页 -->
+                    <div class="pagination" style="width:100%;text-align:center;">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+
+                                <li>
+                                    {% if my_art.has_previous %}
+                                    <a href="?page={{ my_art.previous_page_number }}" aria-label="Previous"><span
+                                            aria-hidden="true">上一页</span></a>
+                                    {% endif %}
+                                </li>
+                                <li>
+
+                                    <a href="?page=1" aria-label="Previous"><span aria-hidden="true">首页</span></a>
+
+
+                                </li>
+                                {%if my_art.number > 2 %}
+                                <li><a href="?page={{ my_art.number |add:-2 }}"> {{ my_art.number |add:-2 }}</a></li>
+                                {%endif%}
+                                {%if my_art.number > 1 %}
+                                <li><a href="?page={{ my_art.number |add:-1 }}"> {{ my_art.number |add:-1 }}</a></li>
+                                {%endif%}
+                                <li><a href="#">第 {{ my_art.number }} 页</a></li>
+                                {%if my_art.number < my_art.paginator.num_pages|add:-1 %} <li><a href="?page={{ my_art.number |add:1 }}">
+                                        {{ my_art.number |add:1 }}</a></li>
+                                    {%endif%}
+                                    {%if my_art.number < my_art.paginator.num_pages|add:-2 %} <li><a href="?page={{my_art.number |add:2 }}">
+                                            {{ my_art.number |add:2 }}</a></li>
+                                        {%endif%}
+                                        <li>
+                                            <a href="?page={{ my_art.paginator.num_pages }}" aria-label="Previous"><span
+                                                    aria-hidden="true">尾页(共{{ my_art.paginator.num_pages }}页)</span></a>
+                                        </li>
+                                        <li>
+                                            {% if my_art.has_next %}
+                                            <a href="?page={{ my_art.next_page_number }}" aria-label="Previous"><span
+                                                    aria-hidden="true">下一页</span></a>
+                                            {% endif %}
+                                        </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+          <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">热门管理</div>
+                    </div>
+                    <div class="widget-body  am-fr">
+                        <div class="am-u-sm-12">
+                            <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                <thead>
+                                    <tr>
+                                        <th>封面图</th>
+                                        <th>文章标题</th>
+                                        <th>类别</th>
+                                        <th>时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in hot%}
+                                    <tr class="gradeX" id='col_{{i.article_id.id}}'>
+                                        <td>
+                                            <img id='art2_{{i.article_id.id}}' onclick='change_fm({{i.article_id.id}})' src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}"
+                                                class="tpl-table-line-img" alt="">
+                                        </td>
+                                        <td class="am-text-middle">{{i.article_id.title}}</td>
+                                        <td class="am-text-middle">{{i.article_id.classify.title}}</td>
+                                        <td class="am-text-middle">{{i.article_id.time|date:'Y-m-d'}}</td>
+                                        <td class="am-text-middle">
+                                            <div class="tpl-table-black-operation">
+                                                <div onclick='delete_hot({{i.id}})' class="tpl-table-black-operation-del">
+                                                    <i class="am-icon-fire"></i> 取消热门
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                    <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="am-u-lg-12 am-cf">
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="my-modal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">选择封面图
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" id='fm_img_list'>
+
+
+        </div>
+    </div>
+</div>
+
+<script id="test" type="text/html">
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+            am-avg-md-3 am-avg-lg-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+            <%for (var i=0;i<list.length;i++) {%>
+            <li>
+                  <div class="am-gallery-item">
+                        <img id='fm_<%=list[i]['pk']%>' onclick='select_img(<%=list[i]['pk']%>,<%=art_id%>)' src="http://114.116.165.218/static/<%=list[i]['fields']['img_file']%>"  alt=""/>
+                  </div>
+                </li>
+                <%}%>
+            </ul>
+            </script>
+
+<script src="http://114.116.165.218/static/js/jquery.min.js"></script>
+<script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
+<script src="http://114.116.165.218/static/admin/js/app.js"></script>
+<!-- <script src="http://114.116.165.218/static/js/bootstrap.min.js"></script> -->
+<script src="http://114.116.165.218/static/js/template-web.js"></script>
+
+
+
+</body>
+<script>
+    function set_hot(i) {
+        $.ajax({
+            url: "/admin/set_hot",
+            data: {
+                id: i,
+                type: 0   //0為設置  1為刪除
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                alert("操作成功！");
+            },
+            error: function (data) {
+                alert("请求失败！");
+            }
+        })
+    }
+
+      function delete_hot(i) {
+        $.ajax({
+            url: "/admin/set_hot",
+            data: {
+                id: i,
+                type: 1  //0為設置  1為刪除
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                alert("操作成功！");
+            },
+            error: function (data) {
+                alert("请求失败！");
+            }
+        })
+    }
+
+
+    
+
+    function change_fm(id) {
+        var $modal = $('#my-modal');
+        $('#fm_img_list').empty()
+        $modal.modal();
+        $.ajax({
+            url: "/change_fm",
+            data: {
+                id: id
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(JSON.parse(data));
+                var data2 = {
+                    list: JSON.parse(data),
+                    art_id: id
+
+                };
+                var html = template('test', data2);
+                document.getElementById('fm_img_list').innerHTML = html;
+            }
+        })
+
+
+    }
+
+
+    function select_img(id, art_id) {
+        $('#art_' + art_id).attr('src', $('#fm_' + id).attr('src'))
+        $('#art2_' + art_id).attr('src', $('#fm_' + id).attr('src'))
+        $.ajax({
+            url: "/change_fm",
+            data: {
+                id: id,
+                art_id: art_id
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+
+                var $modal = $('#my-modal');
+                $modal.modal('close');
+            },
+            error: function (data) {
+                alert('修改不成功！')
+            }
+        })
+    }
+</script>
+
+</html>

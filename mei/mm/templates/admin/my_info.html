@@ -1,0 +1,168 @@
+
+
+
+
+{% include 'admin/header.html' %} 
+
+
+       
+{% include 'admin/left_bar.html' %} 
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+
+                <div class="container-fluid am-cf">
+                    <div class="row">
+                        <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
+                            <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span> 我的信息</div>
+                            </div>
+              
+                    </div>
+    
+                </div>
+    
+                <div class="row-content am-cf">
+                    <div class="row  am-cf">
+                      
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                            <div class="widget widget-primary am-cf">
+                                <div class="widget-statistic-header">
+                                    我的妹子币
+                                </div>
+                                <div class="widget-statistic-body">
+                                    <div class="widget-statistic-value">
+                                            <i class="am-icon-cc-visa"></i>&nbsp;&nbsp;{{user_info.jb_num}}枚
+                                    </div>
+                                    <div class="widget-statistic-description">
+                                        分享即可获得妹子币
+                                    </div>
+                                    <span class="widget-statistic-icon am-icon-credit-card-alt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                            <div class="widget widget-purple am-cf">
+                                <div class="widget-statistic-header">
+                                    我的上传
+                                </div>
+                                <div class="widget-statistic-body">
+                                    <div class="widget-statistic-value"> <i class="am-icon-buysellads"></i>&nbsp;&nbsp;
+    {{my_art_num}}套
+                                    </div>
+                                    <div class="widget-statistic-description">
+                                       上传需审核
+                                    </div>
+                                    <span class="widget-statistic-icon am-icon-support"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row am-cf">
+                        <div class="am-u-sm-12 am-u-md-12">
+                            <div class="widget am-cf" >
+                                <div class="widget-head am-cf">
+                                    <div class="widget-title am-fl">分享获取妹子币</div>
+                                    <div class="widget-function am-fr">
+                                        <a href="javascript:;" class="am-icon-cog"></a>
+                                    </div>
+                                </div>
+                                <div class=" widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
+                                    <h3>分享链接:</h3>
+                                    <form class="am-form">
+                                    <div class="am-form-group">
+                                            <input type="text" readonly style="color:red;" class="" id="copy"  value="http://114.116.165.218:8008/share_meng_girl?user_id={{user.id}}">
+                                          </div></form>
+                                  <input class="am-btn am-btn-danger" type="button" onclick="copyLink();" value="点击复制分享链接"><br><br>
+                                    <p>分享规则:将该链接分享之后,其他用户每点击一次,当前用户增加1枚妹子币。</p> 
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+    
+                    <div class="row">
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                                <div class="widget am-cf">
+                                    <div class="widget-head am-cf">
+                                        <div class="widget-title  am-cf">最新推荐</div>
+                
+                
+                                    </div>
+                                    <div class="widget-body  am-fr">
+                                        <div class="am-u-sm-12">
+                                            <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>封面图</th>
+                                                        <th>文章标题</th>
+                                                        <th>类别</th>
+                                                        <th>时间</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for i in my_art%}
+                                                    <tr class="gradeX" id='col_{{i.id}}'>
+                                                        <td>
+                                                           <a href="/single?page={{i.id}}"> <img id='art_{{i.id}}' src="http://114.116.165.218/static/{{i.fm_img.img_file}}"
+                                                                class="tpl-table-line-img" alt=""></a>
+                                                        </td>
+                                                        <td class="am-text-middle"> <a href="/single?page={{i.id}}">{{i.title}}</a></td>
+                                                        <td class="am-text-middle">{{i.classify.title}}</td>
+                                                        <td class="am-text-middle">{{i.time|date:'Y-m-d'}}</td>
+                                                    
+                                                    </tr>
+                                                    {%endfor%}
+                                                    <!-- more data -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="am-u-lg-12 am-cf">
+                
+                
+                                        </div>
+                                    </div>
+                
+                                 
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
+    <script src="http://114.116.165.218/static/admin/js/app.js"></script>
+
+</body>
+<script type="text/javascript"> 
+    function copyLink(){
+    var e = document.getElementById("copy");
+    e.select(); // 选择对象
+    document.execCommand("Copy"); // 执行浏览器复制命令
+    alert("复制链接成功！快分享给其他人吧。");
+    }
+    </script>
+
+<!-- <script>
+        function delete_c(i) {
+    
+            $.ajax({
+                url: "/admin/delete_collect",
+                data: {
+                    id: i
+                },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    $('#col_' + i).remove();
+                },
+                error: function (data) {
+                    alert("请求失败！");
+                }
+            })
+        }
+    </script> -->
+</html>

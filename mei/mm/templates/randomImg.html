@@ -1,0 +1,81 @@
+
+
+{% include 'header.html' %} 
+
+ <link rel="stylesheet" href="http://114.116.165.218/static/pubuliu_re/css/baguetteBox.css">
+ <link rel="stylesheet" href="http://114.116.165.218/static/pubuliu_re/css/style.css"> 
+ <script src="http://114.116.165.218/static/pubuliu_re/js/baguetteBox.js"></script>
+<div style='width:100%;text-align:center;'>
+		<a href="" class="layui-btn layui-btn-primary layui-btn-radius" style='font-size:30px;color:#F859D7; border:1px solid #F859D7;'>刷新一波</a>
+</div>
+
+<br>
+<br>
+
+ <!-- 瀑布流 -->
+ <section class = "gallery">
+		{% for i in all%}
+		<div>
+		  <a href="{{i}}" data-caption="萌妹子">
+			 <img src="{{i}}" alt="First image">
+		 </a>
+		</div>
+		{%endfor%}
+	 </section>
+
+
+
+	 <script>
+			baguetteBox.run('.gallery', {
+			 // 配置参数
+			 buttons:Boolean,//是否显示导航按钮。
+			 noScrollbars:true,//是否在显示时隐藏滚动条。
+			 titleTag:true,//是否使用图片上的title属性作为图片标题
+			 async:false,//是否异步加载文件。
+		   
+			 afterShow:function(){//显示遮罩层之后的回调函数。   
+				  $(".pressing").fadeIn();
+			   },
+			 afterHide:function(){//隐藏遮罩层之后的回调函数。 
+				 $(".pressing").fadeOut(); 
+			   }
+			 //preload:5 预加载多少个文件。
+			 // onChange: function(currentIndex, imagesCount){} 图片改变时的回调函数 
+			 // overlayBackgroundColor:'rgba(0,0,0,0.8)' 遮罩层的背景颜色
+		   });
+		   
+		   $(function(){
+		   
+			   //返回顶部 
+			   $(window).scroll(function(){
+				   var sc=$(window).scrollTop();
+				   var rwidth=$(window).width()
+				   if(sc>500){
+					   $("#goTopBtn").css("display","block");
+					   $("#goTopBtn").css("left",(rwidth-106)+"px")
+				   }else{
+					   $("#goTopBtn").css("display","none");
+				   }
+			   })
+			   $("#goTopBtn").click(function(){
+				   var sc=$(window).scrollTop();
+				   $('body,html').animate({scrollTop:0},100);
+			   })
+		   
+			   $(".allnews").click(function () {
+				   $("#allcon").css("height", "auto");
+				   $(this).hide(1000);
+			   });
+		   })
+		   
+		   </script>
+
+
+
+	{% include 'footer.html' %}
+	
+
+
+	</body>
+</html>
+

@@ -1,0 +1,167 @@
+
+
+ {% include 'header.html' %} 
+
+
+	<a href="/single?page={{this1}}" class="fh5co-post-prev"><span><i class="icon-chevron-left"></i> 上一个</span></a>
+	<a href="/single?page={{this2}}" class="fh5co-post-next"><span>下一个 <i class="icon-chevron-right"></i></span></a>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid" id='single_id'>
+		<div class="row fh5co-post-entry single-entry">
+			<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+					<br><br>
+					
+					<h3><a href="javascript:;" id='collect'
+						{% if collection_or == 0 %}
+						@click='shouc' 
+						{%else%}
+						{%endif%}
+						
+						
+						 style='color:pink;' >
+						{% if collection_or == 0 %}
+						点击收藏
+						{%else%}
+						已收藏
+						{%endif%}
+					</a></h3>
+					
+					
+				<br><br><br>
+				<figure class="animate-box">
+					<img src="http://114.116.165.218/static/{{article.fm_img.img_file}}" alt="Image" class="img-responsive single_img">
+				</figure>
+					
+				<span class="fh5co-meta animate-box"><a href="javascript:;">分类:{{article.classify.title}}</a>
+				
+				
+				</span>
+				<h2 class="fh5co-article-title animate-box"><a href="javascript:;">{{article.title}}</a></h2>
+				<span class="fh5co-meta fh5co-date animate-box">发布于:{{article.time|date:"Y-m-d"}}
+						&nbsp;&nbsp;&nbsp;
+						<i class="layui-icon layui-icon-user"></i>&nbsp;{{article.visit_num}}次浏览 
+						&nbsp;&nbsp;&nbsp;
+						
+				</span>
+				
+
+
+
+
+				<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
+					<div class="row">
+						<div class="col-lg-12 cp-r animate-box">
+						 {% if  article.text is None%}
+							 {%else %}
+							 {{article.text}}
+						{% endif %}		
+						</div>
+						<!-- <div class="col-lg-4 animate-box">
+							<div class="fh5co-highlight right">
+								<h4>Highlight</h4>
+								<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia</p>
+							</div>
+						</div> -->
+					</div>
+
+		
+{% if lock_or is False %}
+<!-- 鎖 -->
+<div class="lock_contant">    
+	<i class="layui-icon layui-icon-password" style="font-size:35px;background-color:#fff;position: relative;top: -20px;"></i><br>  
+	<button class="layui-btn layui-btn-radius layui-btn-primary"  style="font-size:16px;" @click='unlock({{article.id}})'>点击解锁需要花费一枚妹子币</button><br><br>
+	<img src="http://114.116.165.218/static/images/logo.png" class='logo3' alt="">
+	<br><br><h1 style='font-family:Microsoft YaHei;'>萌妹子</h1>
+<br><br>	<p>萌妹子是一个美女图片分享社区</p>
+</div>
+{%endif%}
+
+
+
+					<div class="row rp-b">
+						<div class="col-lg-12 col-md-12 animate-box">
+							{% for i in art_img%}
+							<figure>
+								<img src="http://114.116.165.218/static/{{i.img_id.img_file}}" alt="美美" class="img-responsive single_img">
+								<!-- <figcaption>This is a sweet image caption. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</figcaption> -->
+							</figure>
+							{% endfor %}
+						</div>
+					</div>
+
+				
+
+					
+				</div>
+			</article>
+		</div>
+	</div>
+
+	{% include 'footer.html' %}
+	
+<script>
+new Vue({
+	el: '#single_id',
+	data: {
+			show_or:'已收藏',
+		  },
+	methods: {
+		shouc:function(){
+
+			{% if request.user.is_authenticated %} 
+			$('#collect').text('已收藏')
+			$.ajax({
+            url: "/collect",
+            data: {
+                user_id: {{user.id}},
+				article_id :{{article.id}}
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+			
+            },
+            error: function (data) {
+                alert("请求失败！");
+            }
+        })
+		{%else%}
+		  layer.msg('请先登录!');
+		{% endif %}
+		},
+		shouc2:function(){
+			// this.show_or=!this.show_or
+			// this.show_or2=!this.show_or2
+		},
+		unlock:function(i){
+
+			{% if request.user.is_authenticated %} 
+			$.ajax({
+            url: "/unlock_article",
+            data: {
+				article_id :{{article.id}}
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+				if ( data['success']==0 ){
+					layer.msg('妹子币不够了，快去分享赚取吧');
+				}else{
+					layer.msg('解锁成功！');
+					window.location.reload()
+				}
+				
+            }
+		})
+		{%else%}
+		 layer.msg('请先登录!');
+			{% endif %}
+
+		}
+	},
+})
+</script>
+
+	</body>
+</html>
+

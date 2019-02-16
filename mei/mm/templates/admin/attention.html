@@ -1,0 +1,105 @@
+
+
+
+
+{% include 'admin/header.html' %} 
+
+
+       
+{% include 'admin/left_bar.html' %} 
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div class="row-content am-cf">
+                <div class="row">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf">我的收藏</div>
+
+
+                            </div>
+                            <div class="widget-body  am-fr">
+
+                               
+
+                                <div class="am-u-sm-12">
+                                    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                        <thead>
+                                            <tr>
+                                                <th>封面图</th>
+                                                <th>文章标题</th>
+                                                <th>类别</th>
+                                                <th>时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in my_collect%}
+                                            <tr class="gradeX" id='col_{{i.id}}'>
+                                                <td>
+                                                        <a href="/single?page={{i.article_id.id}}"> <img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" class="tpl-table-line-img" alt="">
+                                                        </a> </td>
+                                                <td class="am-text-middle"><a href="/single?page={{i.article_id.id}}">{{i.article_id.title}}</a></td>
+                                                <td class="am-text-middle">{{i.article_id.classify.title}}</td>
+                                                <td class="am-text-middle">{{i.article_id.time|date:'Y-m-d'}}</td>
+                                                <td class="am-text-middle">
+                                                    <div class="tpl-table-black-operation">
+                                                        <div onclick='delete_c({{i.id}})' class="tpl-table-black-operation-del">
+                                                            <i class="am-icon-trash"></i> 取消收藏
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {%endfor%}
+                                            <!-- more data -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="am-u-lg-12 am-cf">
+
+                                    <!-- <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                            <li class="am-disabled"><a href="#">«</a></li>
+                                            <li class="am-active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">»</a></li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
+    <script src="http://114.116.165.218/static/admin/js/app.js"></script>
+
+</body>
+<script>
+        function delete_c(i) {
+    
+            $.ajax({
+                url: "/admin/delete_collect",
+                data: {
+                    id: i
+                },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    $('#col_' + i).remove();
+                },
+                error: function (data) {
+                    alert("请求失败！");
+                }
+            })
+        }
+    </script>
+</html>

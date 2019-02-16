@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="http://114.116.165.218/static/css/login.css">
+
+
+{% include 'header.html' %} 
+
+
+
+	<h1>注册或登录</h1>
+	<!-- main -->
+	<div class="main">
+		<!--login-profile-->
+		
+		<!--login-profile-->
+		<!--signin-form-->
+		<div class="w3">
+			<div class="signin-form profile">
+				<h3>登录</h3>
+				
+				<div class="login-form">
+					<form action="/loginValidation" method="post">
+						<input type="text" name="username" placeholder="用户名" required="">
+						<input type="password" name="password" placeholder="密码" required="">
+						<div class="tp">
+							<input type="submit" value="登录">
+						</div>
+					</form>
+				</div>
+				<!-- <div class="header-social wthree">
+							<a href="#" class="face"><h5>Facebook</h5></a>
+							<a href="#" class="goog"><h5>Google+</h5></a>
+							<div class="clear"></div>
+						</div> -->
+				<!-- <p><a href="#"> Don't have an account?</a></p> -->
+			</div>
+		</div>
+
+
+
+
+		<div class="agile" id='agile'>
+			<div class="signin-form profile">
+				<h3>注册</h3>
+				
+				<div class="login-form" >
+
+
+
+					<form  action="/registration" method="post" style='color: black;'>
+						<input type="text" name="email" placeholder="邮箱" style='color:black;' required="" v-model='email' >
+						<input type="text" name="username" placeholder="用户名" required="" v-model='username'>
+						<input type="password" name="password" placeholder="密码" required="" v-model='password'>
+						<input type="password" name="password1" placeholder="确认密码" required="" v-model='password1'>
+				
+						<input type="submit" value="注册" >
+					<br><br>
+						<div v-show="show_or" class="alert alert-danger alert-dismissible" role="alert" style='display: none;'>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<p>两次密码输入不一致</p>
+						</div>
+						<div v-show="email_error" class="alert alert-danger alert-dismissible" role="alert" style='display: none;'>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<p>邮箱格式不正确</p>
+						</div>
+					</form>
+				</div>
+				<!-- <p><a href="#"> By clicking register, I agree to your terms</a></p> -->
+			</div>
+
+		</div>
+		<div class="clear"></div>
+		<!--//signin-form-->	
+	</div>
+					
+
+</html>
+
+{% include 'footer.html' %}
+	</body>
+	<script>
+
+		new Vue({
+		  el: '#agile',
+		  data: {
+			email:'',
+			username:'',
+			password:'',
+			password1:'',
+			show_or:false,
+			email_error:false
+		  },
+		  watch: {
+			password1:function(params){
+				if(this.password!=this.password1){
+						this.show_or=true
+				}else{
+					this.show_or=false
+				}
+			},
+			email:function(params){
+					var regEmail= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+					if(this.email==''){
+					}else if(!regEmail.test(this.email)){
+						this.email_error=true
+					}else{
+						this.email_error=false
+					}
+			},
+		  },	
+		  	methods: {
+			},
+		})			
+		</script>
+</html>
+
