@@ -18,7 +18,7 @@ def get_classify2():
 
 def home(request):
     # return render(request,'home.html',)
-    return redirect('/hot_art')
+    return redirect('http://www.ameizi.cn:8008/hot_art')
 
 
 def copyright(request):

@@ -18,8 +18,8 @@ from django.urls import path
 from mm import views as mm
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', mm.index,name='index'),
-    path('home', mm.home,name='home'),
+    path('index', mm.index,name='index'),
+    path('', mm.home,name='home'),
     path('send/', mm.send,name='send'),
     path('upload_img',mm.upload_img,name='upload_img'),
     path('single',mm.single,name='single'),
