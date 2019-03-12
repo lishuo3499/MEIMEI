@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout  # 注销
 from django.contrib.auth.decorators import login_required  #权限控制
 from django.db.models import Q
-
+from django.conf import settings
 #获取分类
 
 def get_classify2():

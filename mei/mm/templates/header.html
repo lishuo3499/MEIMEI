@@ -85,7 +85,7 @@
 				 {% for i in classify%}
 					<li class="layui-nav-item top_nav_index" ><a href="/{{i.classify_url}}" style='color: black'>{{i.title}}</a></li>
 				{%endfor%}
-				<li class="layui-nav-item top_nav_index" ><a href="/random_img" style='color: black'>随机匹配</a></li>
+				<li class="layui-nav-item top_nav_index" ><a href="/random_img" style='color: black'>随机{{settings.STATIC_ADDRESS }}匹配</a></li>
 
 
 					{% if request.user.is_authenticated %} 
