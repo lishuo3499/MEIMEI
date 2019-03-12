@@ -39,7 +39,7 @@
                                             {% for i in my_collect%}
                                             <tr class="gradeX" id='col_{{i.id}}'>
                                                 <td>
-                                                        <a href="/single?page={{i.article_id.id}}"> <img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" class="tpl-table-line-img" alt="">
+                                                        <a href="/single?page={{i.article_id.id}}"> <img src="{{STATIC_URL }}/static/{{i.article_id.fm_img.img_file}}" class="tpl-table-line-img" alt="">
                                                         </a> </td>
                                                 <td class="am-text-middle"><a href="/single?page={{i.article_id.id}}">{{i.article_id.title}}</a></td>
                                                 <td class="am-text-middle">{{i.article_id.classify.title}}</td>
@@ -79,8 +79,8 @@
         </div>
     </div>
     </div>
-    <script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
-    <script src="http://114.116.165.218/static/admin/js/app.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/amazeui.min.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/app.js"></script>
 
 </body>
 <script>

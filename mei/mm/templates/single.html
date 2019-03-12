@@ -29,7 +29,7 @@
 					
 				<br><br><br>
 				<figure class="animate-box">
-					<img src="http://114.116.165.218/static/{{article.fm_img.img_file}}" alt="Image" class="img-responsive single_img">
+					<img src="{{STATIC_URL }}/static/{{article.fm_img.img_file}}" alt="Image" class="img-responsive single_img">
 				</figure>
 					
 				<span class="fh5co-meta animate-box"><a href="javascript:;">分类:{{article.classify.title}}</a>
@@ -70,7 +70,7 @@
 <div class="lock_contant">    
 	<i class="layui-icon layui-icon-password" style="font-size:35px;background-color:#fff;position: relative;top: -20px;"></i><br>  
 	<button class="layui-btn layui-btn-radius layui-btn-primary"  style="font-size:16px;" @click='unlock({{article.id}})'>点击解锁需要花费一枚妹子币</button><br><br>
-	<img src="http://114.116.165.218/static/images/logo.png" class='logo3' alt="">
+	<img src="{{STATIC_URL }}/static/images/logo.png" class='logo3' alt="">
 	<br><br><h1 style='font-family:Microsoft YaHei;'>萌妹子</h1>
 <br><br>	<p>萌妹子是一个美女图片分享社区</p>
 </div>
@@ -82,7 +82,7 @@
 						<div class="col-lg-12 col-md-12 animate-box">
 							{% for i in art_img%}
 							<figure>
-								<img src="http://114.116.165.218/static/{{i.img_id.img_file}}" alt="美美" class="img-responsive single_img">
+								<img src="{{STATIC_URL }}/static/{{i.img_id.img_file}}" alt="美美" class="img-responsive single_img">
 								<!-- <figcaption>This is a sweet image caption. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</figcaption> -->
 							</figure>
 							{% endfor %}

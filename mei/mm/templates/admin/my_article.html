@@ -31,7 +31,7 @@
                                     {% for i in my_art%}
                                     <tr class="gradeX" id='col_{{i.id}}'>
                                         <td>
-                                            <img id='art_{{i.id}}' onclick='change_fm({{i.id}})' src="http://114.116.165.218/static/{{i.fm_img.img_file}}"
+                                            <img id='art_{{i.id}}' onclick='change_fm({{i.id}})' src="{{STATIC_URL }}/static/{{i.fm_img.img_file}}"
                                                 class="tpl-table-line-img" alt="">
                                         </td>
                                         <td class="am-text-middle">{{i.title}}</td>
@@ -126,18 +126,18 @@
             <%for (var i=0;i<list.length;i++) {%>
             <li>
                   <div class="am-gallery-item">
-                        <img id='fm_<%=list[i]['pk']%>' onclick='select_img(<%=list[i]['pk']%>,<%=art_id%>)' src="http://114.116.165.218/static/<%=list[i]['fields']['img_file']%>"  alt=""/>
+                        <img id='fm_<%=list[i]['pk']%>' onclick='select_img(<%=list[i]['pk']%>,<%=art_id%>)' src="{{STATIC_URL }}/static/<%=list[i]['fields']['img_file']%>"  alt=""/>
                   </div>
                 </li>
                 <%}%>
             </ul>
             </script>
 
-<script src="http://114.116.165.218/static/js/jquery.min.js"></script>
-<script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
-<script src="http://114.116.165.218/static/admin/js/app.js"></script>
-<!-- <script src="http://114.116.165.218/static/js/bootstrap.min.js"></script> -->
-<script src="http://114.116.165.218/static/js/template-web.js"></script>
+<script src="{{STATIC_URL }}/static/js/jquery.min.js"></script>
+<script src="{{STATIC_URL }}/static/admin/js/amazeui.min.js"></script>
+<script src="{{STATIC_URL }}/static/admin/js/app.js"></script>
+<!-- <script src="{{STATIC_URL }}/static/js/bootstrap.min.js"></script> -->
+<script src="{{STATIC_URL }}/static/js/template-web.js"></script>
 
 
 

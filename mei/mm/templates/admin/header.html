@@ -10,17 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="http://114.116.165.218/static/images/logo.png">
-    <link rel="apple-touch-icon-precomposed" href="http://114.116.165.218/static/admin/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="{{STATIC_URL }}/static/images/logo.png">
+    <link rel="apple-touch-icon-precomposed" href="{{STATIC_URL }}/static/admin/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="/static/admin/css/amazeui.min.css" />
-    <link rel="stylesheet" href="http://114.116.165.218/static/admin/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="{{STATIC_URL }}/static/admin/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/static/admin/css/app.css">
-    <link rel="stylesheet" href="http://114.116.165.218/static/css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="http://114.116.165.218/static/css/jquery.my-modal.1.1.winStyle.css"> -->
-    <script src="http://114.116.165.218/static/admin/js/jquery.min.js"></script>
-    <script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
-<!-- <script src="http://114.116.165.218/static/admin/js/app.js"></script> -->
+    <link rel="stylesheet" href="{{STATIC_URL }}/static/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="{{STATIC_URL }}/static/css/jquery.my-modal.1.1.winStyle.css"> -->
+    <script src="{{STATIC_URL }}/static/admin/js/jquery.min.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/amazeui.min.js"></script>
+<!-- <script src="{{STATIC_URL }}/static/admin/js/app.js"></script> -->
     <style>
             .logo1{
                 height:55px;
@@ -30,13 +30,13 @@
 </head>
 
 <body data-type="widgets" class='theme-white'>
-    <script src="http://114.116.165.218/static/admin/js/theme.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 头部 -->
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <a href="/hot_art"><img class='logo1' src="http://114.116.165.218/static/images/logo.png" alt=""></a>
+                <a href="/hot_art"><img class='logo1' src="{{STATIC_URL }}/static/images/logo.png" alt=""></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
@@ -101,7 +101,7 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img src="http://114.116.165.218/static/images/31f13.jpg" alt="">
+                        <img src="{{STATIC_URL }}/static/images/31f13.jpg" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
                         <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>

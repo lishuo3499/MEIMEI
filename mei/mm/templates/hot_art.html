@@ -9,7 +9,7 @@
 				<div class='sangar-content-wrapper' style='display:none;'>	
 						{% for i in wheel %}
 					<div class='sangar-content'>
-					<img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" /></div>
+					<img src="{{STATIC_URL }}/static/{{i.article_id.fm_img.img_file}}" /></div>
 					{%endfor%} 
 				</div>
 			</div>	
@@ -40,7 +40,7 @@
 			{% for i in articles %}
 			<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 				<figure>
-					<a href="/single?page={{i.article_id.id}}"><img src="http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}" alt="Image" class="img-responsive"></a>
+					<a href="/single?page={{i.article_id.id}}"><img src="{{STATIC_URL }}/static/{{i.article_id.fm_img.img_file}}" alt="Image" class="img-responsive"></a>
 				</figure>
 				<span class="fh5co-meta"><a href="/single?page={{i.article_id.id}}">{{i.article_id.classify.title}}</a></span>
 				<h2 class="fh5co-article-title" ><a href="/single?page={{i.article_id.id}}" style='color:#ff4466;'>{{i.article_id.title}}</a></h2>
@@ -97,23 +97,23 @@
 
 			
 <!-- 轮播图 -->
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/jquery.touchSwipe.min.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/imagesloaded.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/imagesloaded.min.js"></script>
 	<!-- jQuery Sangar Slider -->
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarBaseClass.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupLayout.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSizeAndScale.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarShift.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupBulletNav.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupNavigation.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupSwipeTouch.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarSetupTimer.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarBeforeAfter.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarLock.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarResponsiveClass.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarResetSlider.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider/sangarTextbox.js"></script>
-	<script type="text/javascript" src="http://114.116.165.218/static/luobo_re/assets/js/sangarSlider.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarBaseClass.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSetupLayout.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSizeAndScale.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarShift.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSetupBulletNav.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSetupNavigation.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSetupSwipeTouch.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarSetupTimer.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarBeforeAfter.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarLock.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarResponsiveClass.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarResetSlider.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider/sangarTextbox.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL }}/static/luobo_re/assets/js/sangarSlider.js"></script>
 	<script type='text/javascript'>
 				jQuery(document).ready(function($) {
 						var sangar2 = $('#sangar-example2').sangarSlider({
@@ -122,7 +122,7 @@
 			        pagination : 'content-horizontal', // bullet, content, none
 					paginationContent : [
 					{% for i in wheel %}
-	   "http://114.116.165.218/static/{{i.article_id.fm_img.img_file}}",
+	   "{{STATIC_URL }}/static/{{i.article_id.fm_img.img_file}}",
 	   {%endfor%}		
 					], // can be text, image, or something			        
 			        paginationContentType : 'image', // text, image

@@ -17,7 +17,7 @@
 
 	<link
 		rel="stylesheet"
-		href="http://114.116.165.218/static/layui/css/layui.css"
+		href="{{STATIC_URL }}/static/layui/css/layui.css"
 	></link>
 
 	<style>
@@ -150,8 +150,8 @@
 	{% include 'footer.html' %}
 </body>
 
-<script src="http://114.116.165.218/static/layui/layui.all.js"></script>
-<script src="http://114.116.165.218/static/js/jquery.min.js"></script>
+<script src="{{STATIC_URL }}/static/layui/layui.all.js"></script>
+<script src="{{STATIC_URL }}/static/js/jquery.min.js"></script>
 
 <script>
 	$("#fileUpload").on('change', function () {   

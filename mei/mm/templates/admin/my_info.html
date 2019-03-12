@@ -72,7 +72,7 @@
                                     <h3>分享链接:</h3>
                                     <form class="am-form">
                                     <div class="am-form-group">
-                                            <input type="text" readonly style="color:red;" class="" id="copy"  value="http://114.116.165.218:8008/share_meng_girl?user_id={{user.id}}">
+                                            <input type="text" readonly style="color:red;" class="" id="copy"  value="{{STATIC_URL }}:8008/share_meng_girl?user_id={{user.id}}">
                                           </div></form>
                                   <input class="am-btn am-btn-danger" type="button" onclick="copyLink();" value="点击复制分享链接"><br><br>
                                     <p>分享规则:将该链接分享之后,其他用户每点击一次,当前用户增加1枚妹子币。</p> 
@@ -106,7 +106,7 @@
                                                     {% for i in my_art%}
                                                     <tr class="gradeX" id='col_{{i.id}}'>
                                                         <td>
-                                                           <a href="/single?page={{i.id}}"> <img id='art_{{i.id}}' src="http://114.116.165.218/static/{{i.fm_img.img_file}}"
+                                                           <a href="/single?page={{i.id}}"> <img id='art_{{i.id}}' src="{{STATIC_URL }}/static/{{i.fm_img.img_file}}"
                                                                 class="tpl-table-line-img" alt=""></a>
                                                         </td>
                                                         <td class="am-text-middle"> <a href="/single?page={{i.id}}">{{i.title}}</a></td>
@@ -133,8 +133,8 @@
             </div>
     </div>
     </div>
-    <script src="http://114.116.165.218/static/admin/js/amazeui.min.js"></script>
-    <script src="http://114.116.165.218/static/admin/js/app.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/amazeui.min.js"></script>
+    <script src="{{STATIC_URL }}/static/admin/js/app.js"></script>
 
 </body>
 <script type="text/javascript"> 
