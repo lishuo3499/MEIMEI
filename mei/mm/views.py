@@ -418,7 +418,7 @@ def random_img(request):
         random_num = random.randint(first_id,last_id)
         image = Img.objects.get(id=random_num)
         # print(image.img_file)
-        all.append('http://linke.xtu.edu.cn/static/'+str(image.img_file))
+        all.append('http://www.ameizi.cn:8009/static/'+str(image.img_file))
     # print(all)
     return render(request,"randomImg.html",
         {'classify':classify,
